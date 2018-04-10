@@ -1,0 +1,28 @@
+<h2>My Heroes</h2>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" 
+      (click)="onSelect(hero)" 
+      [class.selected]="hero === selectedHero">
+  <!-- TIP °°° ngFor °°°
+    The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.
+    In this example
+    <li> is the host element
+    heroes is the list from the HeroesComponent class.
+    hero holds the current hero object for each iteration through the list. -->
+
+  <!-- TIP °°° [class.selected] °°°
+    The Angular class binding makes it easy to add and remove a CSS class conditionally.
+    Just add [class.some-css-class]="some-condition" to the element you want to style.
+    When the current row hero is the same as the selectedHero, Angular adds the selected CSS class. 
+    When the two heroes are different, Angular removes the class.-->
+
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- TIP °°° Property binding °°°
+  [hero]="selectedHero" is an Angular property binding. 
+  It's a one way data binding from the selectedHero property of the HeroesComponent 
+  to the hero property of the target element -->
