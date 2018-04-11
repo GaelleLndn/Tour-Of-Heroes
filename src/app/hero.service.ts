@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
+import { MessageService } from './message.service';
 
 
 
@@ -26,9 +27,15 @@ import { HEROES } from './mock-heroes';
 
 export class HeroService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
+  /* This is a typical "service-in-service" scenario: 
+  you inject the MessageService into the HeroService which is injected 
+  into the HeroesComponent. */
+
 
   getHeroes(): Observable<Hero[]> {
+    /* Todo: send the message _after_ fetching the heroes*/
+    this.messageService.add('HeroService: fetched heroes');
     return of(HEROES);
     /* this method returns ** mock-heroes **  */
   }

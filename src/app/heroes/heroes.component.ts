@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -9,6 +10,9 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   
+  selectedHero: Hero;
+  heroes: Hero [];
+
   constructor( private heroService: HeroService) { }
   /*  The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
       When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter 
@@ -19,9 +23,6 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  heroes: Hero []
-
-  selectedHero: Hero 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
@@ -30,16 +31,15 @@ export class HeroesComponent implements OnInit {
     You may commonly see this as the return type of functions that do not return a value:
  */
 
- getHeroes(): void {
+  getHeroes(): void {
   /* la methode pour recevoir la liste des heroes avant les observable: */
   /*this.heroes = this.heroService.getHeroes() */
 
-  /* methode avec le observables: */
+  /* methode avec les observables: */
 
-  this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
   }
-
 
 /*   Observable.subscribe() is the critical difference.
     The previous version assigns an array of heroes to the component's heroes property. 
