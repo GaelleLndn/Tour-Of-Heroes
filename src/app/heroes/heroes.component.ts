@@ -10,7 +10,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   
-  selectedHero: Hero;
+  /*  selectedHero: Hero; */  
   heroes: Hero [];
 
   constructor( private heroService: HeroService) { }
@@ -23,9 +23,10 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero): void {
+  /* onSelect(hero: Hero): void {
     this.selectedHero = hero;
-  }
+  } */
+  
  /* TIP °°° Void °°°
     Perhaps the opposite in some ways to 'any' is 'void', the absence of having any type at all. 
     You may commonly see this as the return type of functions that do not return a value:
